@@ -64,11 +64,62 @@ body {
   left: 90%;
 }
 
+.waveImg1 {
+  position: absolute;
+  height: 10%;
+  left: -10%;
+  top: 40%;
+  width: 140%
+}
+.waveImg2 {
+  position: absolute;
+  height: 10%;
+  left: -30%;
+  top: 50%;
+  width: 140%
+
+}
+.waveImg3 {
+  position: absolute;
+  height: 10%;
+  left: -10%;
+  top: 60%;
+  width: 140%
+
+}
+.waveImg4 {
+  position: absolute;
+  height: 10%;
+  left: -30%;
+  top: 70%;
+  width: 140%;
+  animation: waveMove2 5s infinite;
+}
+.waveImg {
+  position: absolute;
+  height: 10%;
+  left: -10%;
+  top: 80%;
+  width: 140%;
+  animation: waveMove1 5s infinite;
+}
 
 @keyframes sharkMove {
   0% {bottom: -35%; left: 50%;}
   50% {bottom: 40%; left: 50%; transform: rotate(180deg)}
   100% {bottom: -35%; left: 50%; transform: rotate(180deg)}
+}
+
+@keyframe waveMove1 {
+  0% {left: -10%;}
+  50% {left: -30%;}
+  100% {left:-10%;}
+}
+
+@keyframe waveMove2 {
+  0% {left: -30%;}
+  50% {left: -10%;}
+  100% {left:-30%;}
 }
 /*@keyframes sharkMove {
     0%   {top: 0px; left: 0px;}
