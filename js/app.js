@@ -24,9 +24,45 @@ function PlayerFactory(name) {
   return player;
 }
 
+var Shark = {
+  moveSharkF: function() {
+    this.distanceToEnd += 2;
+  },
+  moveSharkB: function() {
+    this.distanceToEnd -= 2;
+  },
+  checkDirectionAndGo: function() {
+    if(this.distanceToEnd > 40) {
+      this.moveSharkB();
+      this.css("bottom", this.distanceToEnd + "%");
+      window.setTimeout(this.checkDirectionAndGo, 300);
+    } else if(this.distanceToEnd < -35) {
+      this.moveSharkF();
+      this.css("bottom", this.distanceToEnd + "%");
+      window.setTimeout(this.checkDirectionAndGo, 300);
+    }
+  }
+}
 
+function SharkFactory() {
+  var shark = Object.create(Shark);
+  shark.distanceToEnd = 0;
+  return shark;
+}
+
+var shark = SharkFactory();
 var player1 = PlayerFactory(player1);
 var player2 = PlayerFactory(player2);
+
+shark.checkDirectionAndGo();
+
+$(document).on("keydown", function(e) {
+  if (e.which === 71) {
+    console.log("g pressed");
+    shark.checkDirectionAndGo();
+  }
+})
+
 
 
 $(document).on("keydown", function(e) {
