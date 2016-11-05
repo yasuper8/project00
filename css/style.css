@@ -1,0 +1,37 @@
+
+.title {
+  margin: 3em;
+}
+.conteiner {
+  position: relative;
+  max-width: 90%;
+
+}
+
+.player1, .player2 {
+  height: 10em;
+  width: 10em;
+  margin: 2em;
+  position: absolute;
+}
+
+.player1 {
+  background-color: red;
+  top: 10em;
+  left: 1%;
+}
+
+
+.player2 {
+  background-color: blue;
+  top: 25em;
+  left: 1%;
+}
+
+.goalLine {
+  width: .5em;
+  height: 40em;;
+  background-color: yellow;
+  position: absolute;
+  left: 90%;
+}
