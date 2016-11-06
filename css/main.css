@@ -2,13 +2,45 @@
 body {
   background-color: rgba(158, 226, 255, 0.7);
 }
-
+h1 {
+  text-align: center;
+  /*font-family: 'Shrikhand', cursive;*/
+  color: #333;
+  margin: 1.3em 0 .5em;
+}
+p span {
+  color: red;
+}
+div {
+  /*font-family: 'Shrikhand', cursive;*/
+}
 .title {
-  margin: 3em;
+  margin: 2em 0;
+  text-align: center;
+  /*font-family: 'Shrikhand', cursive;*/
+  font-size: 1em;
+  color: #333;
+}
+.scoreBoard {
+  text-align: center;
 }
 .userInput {
   margin: 1em 0 5em 3em;
   height: 4em;
+}
+.startBtn {
+  height: 3em;
+  background-color: lightblue;
+  text-align: center;
+  margin: 1em 3em;
+  font-size: 4em;
+  padding-top: .6em;
+  border: 5px solid rgba(158, 226, 255, 0.7);
+  border-radius: 40px;
+}
+.startBtn:hover {
+  background-color: blue;
+  color: #eee;
 }
 .conteiner {
   position: relative;
@@ -69,23 +101,24 @@ body {
   height: 10%;
   left: -10%;
   top: 40%;
-  width: 140%
+  width: 140%;
+  animation: waveMove1 5s infinite;
 }
 .waveImg2 {
   position: absolute;
   height: 10%;
   left: -30%;
   top: 50%;
-  width: 140%
-
+  width: 140%;
+  animation: waveMove2 7s infinite;
 }
 .waveImg3 {
   position: absolute;
   height: 10%;
   left: -10%;
   top: 60%;
-  width: 140%
-
+  width: 140%;
+  animation: waveMove1 9s infinite;
 }
 .waveImg4 {
   position: absolute;
@@ -93,7 +126,7 @@ body {
   left: -30%;
   top: 70%;
   width: 140%;
-  animation: waveMove2 5s infinite;
+  animation: waveMove2 11s infinite;
 }
 .waveImg {
   position: absolute;
@@ -101,22 +134,23 @@ body {
   left: -10%;
   top: 80%;
   width: 140%;
-  animation: waveMove1 5s infinite;
+  animation: waveMove1 13s infinite;
 }
 
 @keyframes sharkMove {
-  0% {bottom: -35%; left: 50%;}
+  0% {bottom: -35%; left: 50%; }
+  /*40% {bottom: 40%; left: 40%; height: 80%; transform: rotate(0deg)}*/
   50% {bottom: 40%; left: 50%; transform: rotate(180deg)}
   100% {bottom: -35%; left: 50%; transform: rotate(180deg)}
 }
 
-@keyframe waveMove1 {
+@keyframes waveMove1 {
   0% {left: -10%;}
   50% {left: -30%;}
   100% {left:-10%;}
 }
 
-@keyframe waveMove2 {
+@keyframes waveMove2 {
   0% {left: -30%;}
   50% {left: -10%;}
   100% {left:-30%;}
