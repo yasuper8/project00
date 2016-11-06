@@ -8,6 +8,8 @@ h1 {
   color: #333;
   margin: .8em 0 .5em;
   font-size: 15em;
+  background-image: url("../img/cloud4.png");
+  background-size: contain;
 }
 p span {
   color: red;
@@ -24,12 +26,12 @@ div {
 }
 .scoreBoard {
   text-align: center;
-  height: 5em;
-  font-size: 3em;
+  height: 4em;
+  font-size: 5em;
 }
 .userInput {
-  margin: 1em 0 5em 3em;
-  height: 4em;
+  margin: 1em 0 1em 3em;
+  height: 1em;
 }
 .startBtn, .resetBtn {
   height: 3em;
@@ -99,11 +101,16 @@ div {
 }
 
 .goalLine {
-  width: .5em;
-  height: 30em;
+  width: .2em;
+  height: 60%;
+  top: 45%;
   background-color: yellow;
   position: absolute;
   left: 90%;
+  border-radius: 15px;
+  font-size: 5em;
+  color: red;
+  opacity: 0;
 }
 .waveImg {
   position: absolute;
@@ -208,7 +215,7 @@ div {
 @keyframes sharkMove {
   0% {bottom: -35%; left: 50%; }
   /*40% {bottom: 40%; left: 40%; height: 80%; transform: rotate(0deg)}*/
-  50% {bottom: 40%; left: 50%; transform: rotate(180deg)}
+  50% {bottom: 30%; left: 50%; transform: rotate(180deg)}
   100% {bottom: -35%; left: 50%; transform: rotate(180deg)}
 }
 

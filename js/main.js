@@ -14,10 +14,13 @@ $( document ).ready(function() {
     moveBackward: function() {
       this.distanceToGoal -= 5;
     },
-    resetGame: function() {
+    resetRace: function() {
+      console.log("resetRace called!")
       if (((player1.distanceToGoal >= 85) && (player1.numTracks === 1)) || ((player2.distanceToGoal >= 85) && (player2.numTracks === 1))) {
         player1.distanceToGoal = 1;
         player2.distanceToGoal = 1;
+        player1.numTracks = 0;
+        player2.numTracks = 0;
         $player1.css("left", player1.distanceToGoal + "%");
         $player2.css("left", player2.distanceToGoal + "%");
       }
@@ -27,7 +30,7 @@ $( document ).ready(function() {
         this.score += 1;
         console.log(this.score);
         this.countTracks();
-        this.resetGame();
+        this.resetRace();
         this.displayScore();
         alert(this.name + " Wins!");
       }
@@ -65,19 +68,29 @@ $( document ).ready(function() {
     },
     countStart: function() {
       $(".counter").text("Ready!");
+      $(".counter").css("font-size", "1em");
       setTimeout(function() {
         $(".counter").text("Three");
+        $(".counter").css("font-size", "1em");
       }, 1000);
       setTimeout(function() {
         $(".counter").text("Two");
+        $(".counter").css("font-size", "1.5em");
       }, 2000);
       setTimeout(function() {
         $(".counter").text("One");
+        $(".counter").css("font-size", "2em");
       }, 3000);
       setTimeout(function() {
-        $(".counter").text("Go!!!!");
-        $(".counter").css("font-size", "3em");
+        $(".counter").text("Go!!!");
+        $(".counter").css("font-size", "2.5em");
       }, 4000);
+    },
+    showGoalLine: function() {
+      setTimeout(function() {
+        $(".goalLine").css("opacity", "1");
+      }, 400);
+
     }
   }
 
@@ -118,33 +131,7 @@ $(".startBtn").on('click', function() {
     player.numTracks = 0;
     return player;
   }
-  //
-  // var Shark = {
-  //   moveSharkF: function() {
-  //     this.distanceToEnd += 2;
-  //   },
-  //   moveSharkB: function() {
-  //     this.distanceToEnd -= 2;
-  //   },
-  //   checkDirectionAndGo: function() {
-  //     if(this.distanceToEnd > 40) {
-  //       this.moveSharkB();
-  //       this.css("bottom", this.distanceToEnd + "%");
-  //       window.setTimeout(this.checkDirectionAndGo, 100);
-  //     } else if(this.distanceToEnd < -35) {
-  //       this.moveSharkF();
-  //       this.css("bottom", this.distanceToEnd + "%");
-  //       window.setTimeout(this.checkDirectionAndGo, 100);
-  //     }
-  //   }
-  // }
-  //
-  // function SharkFactory() {
-  //   var shark = Object.create(Shark);
-  //   shark.distanceToEnd = 0;
-  //   return shark;
-  // }
-  //
+
 
 
 
@@ -181,6 +168,7 @@ $(".startBtn").on('click', function() {
         if ((player1.distanceToGoal === 90) && (player1.numTracks === 0)) {
           player1.distanceToGoal = 0;
           player1.countTracks();
+          game.showGoalLine();
         }
       }
     }
@@ -201,6 +189,7 @@ $(".startBtn").on('click', function() {
         if ((player2.distanceToGoal === 90) && (player2.numTracks === 0)) {
           player2.distanceToGoal = 0;
           player2.countTracks();
+          game.showGoalLine();
         }
       }
     }
@@ -212,6 +201,35 @@ $(".startBtn").on('click', function() {
       }
     }
   });
+
+  //
+  // var Shark = {
+  //   moveSharkF: function() {
+  //     this.distanceToEnd += 2;
+  //   },
+  //   moveSharkB: function() {
+  //     this.distanceToEnd -= 2;
+  //   },
+  //   checkDirectionAndGo: function() {
+  //     if(this.distanceToEnd > 40) {
+  //       this.moveSharkB();
+  //       this.css("bottom", this.distanceToEnd + "%");
+  //       window.setTimeout(this.checkDirectionAndGo, 100);
+  //     } else if(this.distanceToEnd < -35) {
+  //       this.moveSharkF();
+  //       this.css("bottom", this.distanceToEnd + "%");
+  //       window.setTimeout(this.checkDirectionAndGo, 100);
+  //     }
+  //   }
+  // }
+  //
+  // function SharkFactory() {
+  //   var shark = Object.create(Shark);
+  //   shark.distanceToEnd = 0;
+  //   return shark;
+  // }
+  //
+
 
 
 // $player1.animate({"left": player1.distanceToGoal + "%"}, "fast");
