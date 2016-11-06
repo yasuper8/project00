@@ -2,14 +2,6 @@ console.log("main.js linked")
 $( document ).ready(function() {
     console.log( "ready!" );
 
-    swal({
-      title: "Error!",
-      text: "Here's my error message!",
-      type: "error",
-      confirmButtonText: "Cool"
-    });
-
-
   var $player1 = $(".player1");
   var $player2 = $(".player2");
   var $player2Score = $(".player2Score");
@@ -25,8 +17,8 @@ $( document ).ready(function() {
     resetRace: function() {
       console.log("resetRace called!")
       if (((player1.distanceToGoal >= 85) && (player1.numTracks === 1)) || ((player2.distanceToGoal >= 85) && (player2.numTracks === 1))) {
-        player1.distanceToGoal = 1;
-        player2.distanceToGoal = 1;
+        player1.distanceToGoal = 0;
+        player2.distanceToGoal = 0;
         player1.numTracks = 0;
         player2.numTracks = 0;
         $player1.css("left", player1.distanceToGoal + "%");
@@ -34,13 +26,20 @@ $( document ).ready(function() {
       }
     },
     checkWin: function() {
-      if((this.numTracks === 1) && (this.distanceToGoal >= 90)) {
+      if((((player1.numTracks <= 1) && (player1.distanceToGoal < 90)) && ((player2.numTracks === 1) && (player2.distanceToGoal >= 90))) ||
+        (((player2.numTracks <= 1) && (player2.distanceToGoal < 90)) && ((player1.numTracks === 1) && (player1.distanceToGoal >= 90)))) {
         this.score += 1;
         console.log(this.score);
         this.countTracks();
         this.resetRace();
         this.displayScore();
-        alert(this.name + " Wins!");
+        // alert(this.name + " Wins!");
+        swal({
+          title: this.name + " Wins!",
+          text: "",
+          timer: 2500,
+          showConfirmButton: false
+        });
       }
     },
     displayScore: function() {
@@ -62,13 +61,6 @@ $( document ).ready(function() {
     }
   }
 
-
-  // function resteGame() {
-  //
-  //     player1.distanceToGoal = 0;
-  //     player2.distanceToGoal = 0;
-  //
-  // }
 
   var Game = {
     addNumGame: function() {
@@ -149,8 +141,8 @@ $(".startBtn").on('click', function() {
       console.log(player1.distanceToGoal);
       player1.numTracks = 0;
       player2.numTracks = 0;
-      player1.distanceToGoal = 1;
-      player2.distanceToGoal = 1;
+      player1.distanceToGoal = 0;
+      player2.distanceToGoal = 0;
       $player1.css("left", player1.distanceToGoal + "%");
       $player2.css("left", player2.distanceToGoal + "%");
       $(".goalLine").css("opacity", "0")
@@ -165,8 +157,8 @@ $(".startBtn").on('click', function() {
       console.log("keyup");
       console.log(player1.distanceToGoal)
       if(this.distanceToGoal === 85) {
-        player1.distanceToGoal = 1;
-        player2.distanceToGoal = 1;
+        player1.distanceToGoal = 0;
+        player2.distanceToGoal = 0;
       }
     }
   });
@@ -180,7 +172,7 @@ $(".startBtn").on('click', function() {
         player1.moveForward();
         $player1.css("left", player1.distanceToGoal + "%");
         player1.checkWin();
-        if ((player1.distanceToGoal === 90) && (player1.numTracks === 0)) {
+        if ((player1.distanceToGoal >= 90) && (player1.numTracks === 0)) {
           player1.distanceToGoal = 0;
           player1.countTracks();
           game.showGoalLine();
@@ -201,7 +193,7 @@ $(".startBtn").on('click', function() {
         $player2.css("left", player2.distanceToGoal + "%");
         console.log(player2.distanceToGoal);
         player2.checkWin();
-        if ((player2.distanceToGoal === 90) && (player2.numTracks === 0)) {
+        if ((player2.distanceToGoal >= 90) && (player2.numTracks === 0)) {
           player2.distanceToGoal = 0;
           player2.countTracks();
           game.showGoalLine();
