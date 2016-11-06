@@ -18,7 +18,7 @@ div {
   font-family: 'Shrikhand', cursive;
 }
 .title {
-  margin: 2em 0;
+  margin: 2em 0 1em;;
   text-align: center;
   font-family: 'Shrikhand', cursive;
   font-size: 5em;
@@ -30,7 +30,12 @@ div {
   font-size: 8em;
   margin: 0 0 .5em 0;
 }
-
+.playerLogos {
+  height: 1em;
+}
+.playerLogosHead {
+  height: 2em;
+}
 .player1Score, .player2Score {
   background-image: url("../img/cloud2.png");
   background-size: contain;
@@ -38,8 +43,9 @@ div {
   background-position: center;
   /*border: 3px solid rgba(158, 226, 255, 0.7);*/
   height: 2.5em;
-  padding-top: .85em;
+  padding-top: .2em;
   top:0;
+  padding-right: .5em;
 }
 .userInput {
   /*margin: 1em 0 1em 3em;

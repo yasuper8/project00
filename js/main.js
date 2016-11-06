@@ -35,7 +35,7 @@ $( document ).ready(function() {
         this.displayScore();
         // alert(this.name + " Wins!");
         swal({
-          title: this.name + " Wins!",
+          title: this.name + " Win!",
           text: "",
           timer: 2500,
           showConfirmButton: false
@@ -44,16 +44,16 @@ $( document ).ready(function() {
     },
     displayScore: function() {
       if (player1.score === 1) {
-        $player1Score.text("Player 1: " + player1.score + " Win");
+        $player1Score.html("<img class='playerLogosHead' src='img/ship.png' alt='player1'>" + " " + player1.score + " Win");
       }
       if (player1.score > 1) {
-        $player1Score.text("Player 1: " + player1.score + " Wins");
+        $player1Score.html("<img class='playerLogosHead' src='img/ship.png' alt='player1'>" + " " + player1.score + " Wins");
       }
       if (player2.score === 1) {
-        $player2Score.text("Player 2: " + player2.score + " Win");
+        $player2Score.html("<img class='playerLogosHead' src='img/ship2.png' alt='player2'>" + " " + player2.score + " Win");
       }
       if (player2.score > 1) {
-        $player2Score.text("Player 2: " + player2.score + " Wins");
+        $player2Score.html("<img class='playerLogosHead' src='img/ship2.png' alt='player2'>" + " " + player2.score + " Wins");
       }
     },
     countTracks: function() {
@@ -66,7 +66,7 @@ $( document ).ready(function() {
     addNumGame: function() {
       this.numGame += 1;
     },
-    countStart: function() {
+    countMessages: function() {
       $(".counter").text("Ready!");
       $(".counter").css("font-size", "1em");
       setTimeout(function() {
@@ -90,19 +90,23 @@ $( document ).ready(function() {
       setTimeout(function() {
         $(".goalLine").css("opacity", "1");
       }, 400);
-
-    }
+    },
+    // startCount: function() {
+    //   for(var i = 3; i >= 0; i--) {
+    //     console.log(i)
+    //     game.countMessages();
+    // }
   }
 
 
 
-$(".startBtn").on('click', function() {
-  console.log("start clicked");
-  for(var i = 3; i >= 0; i--) {
-    console.log(i)
-    game.countStart();
-  }
-});
+// $(".startBtn").on('click', function() {
+//   console.log("start clicked");
+//   for(var i = 3; i >= 0; i--) {
+//     console.log(i)
+//     game.countMessages();
+//   }
+// });
   //
   // $("form").on('submit', function(event) {
   //       event.preventDefault();
@@ -135,7 +139,7 @@ $(".startBtn").on('click', function() {
 
 
 
-  $(document).on("keydown", function(e) {
+  $(document).on("keydown",function(e) {
     if (e.which === 71 ) {
       console.log("g pressed");
       console.log(player1.distanceToGoal);
@@ -145,21 +149,28 @@ $(".startBtn").on('click', function() {
       player2.distanceToGoal = 0;
       $player1.css("left", player1.distanceToGoal + "%");
       $player2.css("left", player2.distanceToGoal + "%");
-      $(".goalLine").css("opacity", "0")
+      $(".goalLine").css("opacity", "0");
+      game.countMessages();
       console.log($('sharks').position());
       console.log(player2.numTracks);
     }
   });
 
 
-  $(document).on("keyup", function(e) {
-    if (e.which === 76) {
-      console.log("keyup");
-      console.log(player1.distanceToGoal)
-      if(this.distanceToGoal === 85) {
-        player1.distanceToGoal = 0;
-        player2.distanceToGoal = 0;
-      }
+  $(document).on("keydown", function(e) {
+    if (e.which === 82) {
+      console.log("r pressed");
+      player1.numTracks = 0;
+      player2.numTracks = 0;
+      player1.distanceToGoal = 0;
+      player2.distanceToGoal = 0;
+      $player1.css("left", player1.distanceToGoal + "%");
+      $player2.css("left", player2.distanceToGoal + "%");
+      player1.score = 0;
+      player2.score = 0;
+      $player1Score.html("<img class='playerLogosHead' src='img/ship.png' alt='player1'>");
+      $player2Score.html("<img class='playerLogosHead' src='img/ship2.png' alt='player2'>");
+      $(".goalLine").css("opacity", "0");
     }
   });
 
