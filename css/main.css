@@ -30,8 +30,8 @@ div {
   font-size: 5em;
 }
 .userInput {
-  margin: 1em 0 1em 3em;
-  height: 1em;
+  /*margin: 1em 0 1em 3em;
+  height: 1em;*/
 }
 .startBtn, .resetBtn {
   height: 3em;

@@ -2,6 +2,14 @@ console.log("main.js linked")
 $( document ).ready(function() {
     console.log( "ready!" );
 
+    swal({
+      title: "Error!",
+      text: "Here's my error message!",
+      type: "error",
+      confirmButtonText: "Cool"
+    });
+
+
   var $player1 = $(".player1");
   var $player2 = $(".player2");
   var $player2Score = $(".player2Score");
@@ -43,10 +51,10 @@ $( document ).ready(function() {
         $player1Score.text("Player 1: " + player1.score + " Wins");
       }
       if (player2.score === 1) {
-        $player2Score.text("Player 1: " + player2.score + " Win");
+        $player2Score.text("Player 2: " + player2.score + " Win");
       }
       if (player2.score > 1) {
-        $player2Score.text("Player 1: " + player2.score + " Wins");
+        $player2Score.text("Player 2: " + player2.score + " Wins");
       }
     },
     countTracks: function() {
@@ -139,8 +147,15 @@ $(".startBtn").on('click', function() {
     if (e.which === 71 ) {
       console.log("g pressed");
       console.log(player1.distanceToGoal);
-        player1.distanceToGoal = -4;
-        player2.distanceToGoal = -4;
+      player1.numTracks = 0;
+      player2.numTracks = 0;
+      player1.distanceToGoal = 1;
+      player2.distanceToGoal = 1;
+      $player1.css("left", player1.distanceToGoal + "%");
+      $player2.css("left", player2.distanceToGoal + "%");
+      $(".goalLine").css("opacity", "0")
+      console.log($('sharks').position());
+      console.log(player2.numTracks);
     }
   });
 

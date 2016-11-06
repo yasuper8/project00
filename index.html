@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="css/main.css">
   <!-- my app.js -->
   <script type="text/javascript" src="js/main.js"></script>
+  <!-- sweetalert -->
+  <script src="distSweetAlert/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="distSweetAlert/sweetalert.css">
+
   <title>Project00 Racing Game</title>
 </head>
 
@@ -30,9 +34,9 @@
     </div>
   </div>
   <div class="row scoreBoard">
-    <div class="player2Score col-xs-4">Player1</div>
+    <div class="player1Score col-xs-4">Player1</div>
     <div class="counter col-xs-4"></div>
-    <div class="player1Score col-xs-4">Player2</div>
+    <div class="player2Score col-xs-4">Player2</div>
   </div>
 
   <!-- <script id="yasu-add-li" type="text/x-handlebars-template">
@@ -47,10 +51,16 @@
       </script> -->
 
 
-  <div class="row">
+  <div class="row userInput">
     <div class="col-xs-6 userInput">
-      <form action="">
-        <input type="text" name="name" class="userName">
+      <form class="player1" action="">
+        <input type="text" name="name" class="nameP1">
+        <input type="submit" class="btn">
+      </form>
+    </div>
+    <div class="col-xs-6 userInpu">
+      <form class="player2" action="">
+        <input type="text" name="name" class="nameP2">
         <input type="submit" class="btn">
       </form>
     </div>
