@@ -4,31 +4,34 @@ body {
 }
 h1 {
   text-align: center;
-  /*font-family: 'Shrikhand', cursive;*/
+  font-family: 'Shrikhand', cursive;
   color: #333;
-  margin: 1.3em 0 .5em;
+  margin: .8em 0 .5em;
+  font-size: 15em;
 }
 p span {
   color: red;
 }
 div {
-  /*font-family: 'Shrikhand', cursive;*/
+  font-family: 'Shrikhand', cursive;
 }
 .title {
   margin: 2em 0;
   text-align: center;
-  /*font-family: 'Shrikhand', cursive;*/
-  font-size: 1em;
+  font-family: 'Shrikhand', cursive;
+  font-size: 5em;
   color: #333;
 }
 .scoreBoard {
   text-align: center;
+  height: 5em;
+  font-size: 3em;
 }
 .userInput {
   margin: 1em 0 5em 3em;
   height: 4em;
 }
-.startBtn {
+.startBtn, .resetBtn {
   height: 3em;
   background-color: lightblue;
   text-align: center;
@@ -38,9 +41,16 @@ div {
   border: 5px solid rgba(158, 226, 255, 0.7);
   border-radius: 40px;
 }
+.resetBtn:hover {
+  background-color: blue;
+  color: #eee;
+}
 .startBtn:hover {
   background-color: blue;
   color: #eee;
+}
+.btnBoard {
+  margin: 0 auto;
 }
 .conteiner {
   position: relative;
@@ -79,12 +89,12 @@ div {
 }
 .player1 {
   /*background-color: red;*/
-  top: 25em;
+  top: 50em;
   left: 1%;
 }
 .player2 {
   /*background-color: blue;*/
-  top: 40em;
+  top: 67em;
   left: 1%;
 }
 
@@ -95,30 +105,41 @@ div {
   position: absolute;
   left: 90%;
 }
-
+.waveImg {
+  position: absolute;
+  height: 10%;
+  left: -10%;
+  top: 50%;
+  width: 140%;
+  animation: waveMove1 7s infinite;
+  opacity: .35;
+}
 .waveImg1 {
   position: absolute;
   height: 10%;
   left: -10%;
-  top: 40%;
+  top: 55%;
   width: 140%;
-  animation: waveMove1 5s infinite;
+  animation: waveMove1 7s infinite;
+  opacity: .45;
 }
 .waveImg2 {
-  position: absolute;
-  height: 10%;
-  left: -30%;
-  top: 50%;
-  width: 140%;
-  animation: waveMove2 7s infinite;
-}
-.waveImg3 {
   position: absolute;
   height: 10%;
   left: -10%;
   top: 60%;
   width: 140%;
-  animation: waveMove1 9s infinite;
+  animation: waveMove2 8s infinite;
+  opacity: .55;
+}
+.waveImg3 {
+  position: absolute;
+  height: 10%;
+  left: -30%;
+  top: 65%;
+  width: 140%;
+  animation: waveMove2 8s infinite;
+  opacity: .7;
 }
 .waveImg4 {
   position: absolute;
@@ -126,15 +147,62 @@ div {
   left: -30%;
   top: 70%;
   width: 140%;
-  animation: waveMove2 11s infinite;
+  animation: waveMove1 11s infinite;
+  opacity: .8
 }
-.waveImg {
+.waveImg5 {
+  position: absolute;
+  height: 10%;
+  left: -30%;
+  top: 75%;
+  width: 140%;
+  animation: waveMove1 11s infinite;
+  opacity: .7;
+}
+.waveImg6 {
   position: absolute;
   height: 10%;
   left: -10%;
   top: 80%;
   width: 140%;
-  animation: waveMove1 13s infinite;
+  animation: waveMove2 13s infinite;
+  opacity: .8
+}
+.waveImg7 {
+  position: absolute;
+  height: 10%;
+  left: -10%;
+  top: 85%;
+  width: 140%;
+  animation: waveMove2 13s infinite;
+  opacity: .7;
+}
+.waveImg8 {
+  position: absolute;
+  height: 10%;
+  left: -10%;
+  top: 90%;
+  width: 140%;
+  animation: waveMove1 14s infinite;
+  opacity: .8;
+}
+.waveImg9 {
+  position: absolute;
+  height: 10%;
+  left: -10%;
+  top: 95%;
+  width: 140%;
+  animation: waveMove1 14s infinite;
+  opacity: .7;
+}
+.waveImg10 {
+  position: absolute;
+  height: 10%;
+  left: -10%;
+  bottom: -5%;
+  width: 140%;
+  animation: waveMove1 15s infinite;
+  opacity: .7;
 }
 
 @keyframes sharkMove {

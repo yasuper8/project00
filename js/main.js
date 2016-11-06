@@ -15,7 +15,7 @@ $( document ).ready(function() {
       this.distanceToGoal -= 5;
     },
     resetGame: function() {
-      if ((player1.distanceToGoal >= 90) || (player2.distanceToGoal >= 90)) {
+      if (((player1.distanceToGoal >= 85) && (player1.numTracks === 1)) || ((player2.distanceToGoal >= 85) && (player2.numTracks === 1))) {
         player1.distanceToGoal = 1;
         player2.distanceToGoal = 1;
         $player1.css("left", player1.distanceToGoal + "%");
@@ -163,8 +163,8 @@ $(".startBtn").on('click', function() {
       console.log("keyup");
       console.log(player1.distanceToGoal)
       if(this.distanceToGoal === 85) {
-        player1.distanceToGoal = 0;
-        player2.distanceToGoal = 0;
+        player1.distanceToGoal = 1;
+        player2.distanceToGoal = 1;
       }
     }
   });
@@ -198,7 +198,7 @@ $(".startBtn").on('click', function() {
         $player2.css("left", player2.distanceToGoal + "%");
         console.log(player2.distanceToGoal);
         player2.checkWin();
-        if ((player2.distanceToGoal === 90) && (player2.numtracks === 0)) {
+        if ((player2.distanceToGoal === 90) && (player2.numTracks === 0)) {
           player2.distanceToGoal = 0;
           player2.countTracks();
         }
