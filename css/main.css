@@ -84,13 +84,21 @@ div {
 .sharkIcons {
   height: 100%;
 }
+.sharks1 {
+  height:16%;
+  width: 5%;
+  position: absolute;
+  bottom: -35%;
+  left: 25%;
+  animation: sharkMove 5s infinite;
+}
 .sharks {
-  height:20%;
+  height:12%;
   width: 5%;
   position: absolute;
   bottom: -35%;
   left: 50%;
-  animation: sharkMove 5s infinite;
+  transform: rotate(-45deg);
 }
 /*.sharks2 {
   height:20%;
@@ -231,10 +239,10 @@ div {
 }
 
 @keyframes sharkMove {
-  0% {bottom: -35%; left: 50%; }
+  0% {bottom: -35%; left: 25%; }
   /*40% {bottom: 40%; left: 40%; height: 80%; transform: rotate(0deg)}*/
-  50% {bottom: 30%; left: 50%; transform: rotate(180deg)}
-  100% {bottom: -35%; left: 50%; transform: rotate(180deg)}
+  50% {bottom: 30%; left: 25%; transform: rotate(180deg)}
+  100% {bottom: -35%; left: 25%; transform: rotate(180deg)}
 }
 
 @keyframes waveMove1 {
