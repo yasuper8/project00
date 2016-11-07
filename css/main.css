@@ -96,7 +96,7 @@ div {
   position: absolute;
   bottom: -35%;
   left: 15%;
-  animation: sharkMove1 4s infinite;
+  /*animation: sharkMove1 4s infinite;*/
 }
 .sharks2 {
   height:13%;
@@ -104,21 +104,21 @@ div {
   position: absolute;
   bottom: -35%;
   left: 35%;
-  animation: sharkMove2 6s infinite;
+  /*animation: sharkMove2 6s infinite;*/
 }
 .sharks3 {
   height:12%;
   position: absolute;
   bottom: -35%;
   left: 50%;
-  animation: sharkMove3 5s infinite;
+  /*animation: sharkMove3 5s infinite;*/
 }
 .sharks4 {
   height:13%;
   position: absolute;
   bottom: -35%;
   left: 70%;
-  animation: sharkMove4 3.5s infinite;
+  /*animation: sharkMove4 3.5s infinite;*/
 }
 .sharks5 {
   height:12%;

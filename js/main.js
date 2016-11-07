@@ -133,6 +133,7 @@ $( document ).ready(function() {
       setTimeout(function() {
         $(".counter").text("One");
         $(".counter").css("font-size", "2em");
+        shark.loopRondomBites();
       }, 2000);
       setTimeout(function() {
         $(".counter").text("Go!!!");
@@ -154,34 +155,66 @@ $( document ).ready(function() {
   }
 
   var $shark = $('.sharks');
+  var $shark1 = $('.sharks1');
+  var $shark2 = $('.sharks2');
+  var $shark3 = $('.sharks3');
+  var $shark4= $('.sharks4');
     var Shark = {
-
-      // moveSharkF: function() {
-      //   this.distanceToEnd += 2;
-      // },
-      // moveSharkB: function() {
-      //   this.distanceToEnd -= 2;
-      // },
-      // checkDirectionAndGo: function() {
-      //   if(this.distanceToEnd > 40) {
-      //     this.moveSharkB();
-      //     this.css("bottom", this.distanceToEnd + "%");
-      //     window.setTimeout(this.checkDirectionAndGo, 100);
-      //   } else if(this.distanceToEnd < -35) {
-      //     this.moveSharkF();
-      //     this.css("bottom", this.distanceToEnd + "%");
-      //     window.setTimeout(this.checkDirectionAndGo, 100);
-      //   }
-      // }
-      sharkJump: function() {
+      sharkJump1: function() {
         $shark.animate({"bottom": "30%"}, 1000);
+        $shark.animate({"bottom": "-30%"}, 2000);
+      },
+      sharkJump2: function() {
+        $shark1.animate({"bottom": "30%"}, 1000);
+        $shark1.animate({"bottom": "-30%"}, 2000);
+      },
+      sharkJump3: function() {
+        $shark2.animate({"bottom": "30%"}, 1000);
+        $shark2.animate({"bottom": "-30%"}, 2000);
+      },
+      sharkJump4: function() {
+        $shark3.animate({"bottom": "30%"}, 1000);
+        $shark3.animate({"bottom": "-30%"}, 2000);
+      },
+      sharkJump5: function() {
+        $shark4.animate({"bottom": "30%"}, 1000);
+        $shark4.animate({"bottom": "-30%"}, 2000);
       },
       sharkBite: function() {
-        if($player1.css("left") === "2880px") {
-          player1.attackedBySharkP1();
+        for(var i = 4; i > 0; i--) {
+          if ($player1.css("left") === game.positionShip[i]) {
+            player1.attackedBySharkP1();
+          }
+          if ($player2.css("left") === game.positionShip[i]) {
+            player2.attackedBySharkP2();
+          }
         }
-        if ($player2.css("left") === 4608) {
-          player2.attackedBySharkP2();
+      },
+      rondomSharkBites: function() {
+        setTimeout(function() {
+        shark.sharkJump2();
+        shark.sharkBite();
+        }, 2000);
+        setTimeout(function() {
+          shark.sharkJump2();
+          shark.sharkBite();
+        }, 4000);
+        setTimeout(function() {
+          shark.sharkJump2();
+          shark.sharkBite();
+        }, 4000);
+        setTimeout(function() {
+          shark.sharkJump2();
+          shark.sharkBite();
+        }, 5000);
+        setTimeout(function() {
+          shark.sharkJump2();
+          shark.sharkBite();
+        }, 3000);
+      },
+      loopRondomBites: function() {
+        for(var i = 5; i >= 0; i--) {
+          shark.rondomSharkBites();
         }
       }
     }
@@ -204,7 +237,7 @@ $( document ).ready(function() {
     var game = Object.create(Game);
     game.numGame = 0;
     game.startCounter = 3;
-    game.positionShip = ["288px", "576px", "864px", "1152px", "1440", "1728px", "2016", "2304", "2592", "2880", "3168", "3456", "3744", "4032", "4320", "4608"];
+    game.positionShip = ["864px", "2016", "2880", "4032"];
     return game;
   }
 
@@ -222,23 +255,29 @@ $( document ).ready(function() {
 
 
 
-    function SharkFactory() {
-      var shark = Object.create(Shark);
-      shark.distanceToEnd = 0;
-      return shark;
+  function SharkFactory() {
+    var shark = Object.create(Shark);
+    shark.distanceToEnd = 0;
+    return shark;
+  }
+
+
+  $(document).on("keydown", function(e) {
+    if (e.which === 80) {
+      console.log('p pressed for shark');
+      console.log($player1.css("left"))
+      console.log(typeof $player1.css("left"))
+      shark.sharkJump();
+      shark.sharkBite()
     }
+  });
 
 
-    $(document).on("keydown", function(e) {
-      if (e.which === 80) {
-        console.log('p pressed for shark');
-        console.log($player1.css("left"))
-        console.log(typeof $player1.css("left"))
-        shark.sharkJump();
-        shark.sharkBite()
-      }
-    });
-
+  $(document).on("keydown", function(e) {
+    if (e.which === 73) {
+    console.log("i pressed");
+    }
+  });
 
 
 
@@ -326,7 +365,6 @@ $( document ).ready(function() {
         player2.displayLapsP2();
         player2.moveForward();
         $player2.css("left", player2.distanceToGoal + "%");
-        console.log(player2.distanceToGoal);
         player2.checkWin();
         if ((player2.distanceToGoal >= 90) && (player2.numTracks === 0)) {
           player2.distanceToGoal = 0;
@@ -349,56 +387,6 @@ $( document ).ready(function() {
       player2.moveBackward();
       $player2.css("left", player2.distanceToGoal + "%");
       }
-    }
-  });
-
-var $shark = $('.sharks');
-  var Shark = {
-
-    // moveSharkF: function() {
-    //   this.distanceToEnd += 2;
-    // },
-    // moveSharkB: function() {
-    //   this.distanceToEnd -= 2;
-    // },
-    // checkDirectionAndGo: function() {
-    //   if(this.distanceToEnd > 40) {
-    //     this.moveSharkB();
-    //     this.css("bottom", this.distanceToEnd + "%");
-    //     window.setTimeout(this.checkDirectionAndGo, 100);
-    //   } else if(this.distanceToEnd < -35) {
-    //     this.moveSharkF();
-    //     this.css("bottom", this.distanceToEnd + "%");
-    //     window.setTimeout(this.checkDirectionAndGo, 100);
-    //   }
-    // }
-    sharkJump: function() {
-      $shark.animate({"bottom": "30%"}, 1000);
-    },
-    sharkBite: function() {
-      if($player1.css("left") === "2880px") {
-        player1.attackedBySharkP1();
-      }
-      if ($player2.css("left") === 4608) {
-        player2.attackedBySharkP2();
-      }
-    }
-  }
-
-  function SharkFactory() {
-    var shark = Object.create(Shark);
-    shark.distanceToEnd = 0;
-    return shark;
-  }
-
-
-  $(document).on("keydown", function(e) {
-    if (e.which === 80) {
-      console.log('p pressed for shark');
-      console.log($player1.css("left"))
-      console.log(typeof $player1.css("left"))
-      shark.sharkJump();
-      shark.sharkBite()
     }
   });
 
