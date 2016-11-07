@@ -2,6 +2,11 @@ body.stop-scrolling {
   height: 100%;
   overflow: hidden; }
 
+  .swal-wide{
+      width:1200px !important;
+      font-size: 40px !important;
+
+  }
 .sweet-overlay {
   background-color: black;
   /* IE8 */

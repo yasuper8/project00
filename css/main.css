@@ -17,6 +17,13 @@ p span {
 div {
   font-family: 'Shrikhand', cursive;
 }
+.swal-width {
+  width: 800px; !important;
+}
+.p1LapsLeft, .p2LapsLeft {
+  font-size: 4em;
+  color: #222;
+}
 .title {
   margin: 2em 0 1em;;
   text-align: center;
@@ -85,16 +92,43 @@ div {
   height: 100%;
 }
 .sharks1 {
-  height:16%;
-  width: 5%;
+  height:10%;
   position: absolute;
   bottom: -35%;
-  left: 25%;
-  animation: sharkMove 5s infinite;
+  left: 15%;
+  animation: sharkMove1 4s infinite;
+}
+.sharks2 {
+  height:13%;
+
+  position: absolute;
+  bottom: -35%;
+  left: 35%;
+  animation: sharkMove2 6s infinite;
+}
+.sharks3 {
+  height:12%;
+  position: absolute;
+  bottom: -35%;
+  left: 50%;
+  animation: sharkMove3 5s infinite;
+}
+.sharks4 {
+  height:13%;
+  position: absolute;
+  bottom: -35%;
+  left: 70%;
+  animation: sharkMove4 3.5s infinite;
+}
+.sharks5 {
+  height:12%;
+  position: absolute;
+  bottom: -35%;
+  left: 85%;
+  animation: sharkMove5 4s infinite;
 }
 .sharks {
-  height:12%;
-  width: 5%;
+  height:8%;
   position: absolute;
   bottom: -35%;
   left: 50%;
@@ -130,7 +164,7 @@ div {
   width: .2em;
   height: 60%;
   top: 45%;
-  background-color: yellow;
+  background-color: #EEE82C;
   position: absolute;
   left: 90%;
   border-radius: 15px;
@@ -238,13 +272,36 @@ div {
   opacity: .7;
 }
 
-@keyframes sharkMove {
-  0% {bottom: -35%; left: 25%; }
+@keyframes sharkMove1 {
+  0% {bottom: -35%; left: 15%;}
   /*40% {bottom: 40%; left: 40%; height: 80%; transform: rotate(0deg)}*/
-  50% {bottom: 30%; left: 25%; transform: rotate(180deg)}
-  100% {bottom: -35%; left: 25%; transform: rotate(180deg)}
+  50% {bottom: 30%; left: 15%;}
+  100% {bottom: -35%; left: 15%;}
 }
-
+@keyframes sharkMove2 {
+  0% {bottom: -35%; left: 35%; }
+  /*40% {bottom: 40%; left: 40%; height: 80%; transform: rotate(0deg)}*/
+  50% {bottom: 30%; left: 35%; transform: rotate(180deg)}
+  100% {bottom: -35%; left: 35%; transform: rotate(180deg)}
+}
+@keyframes sharkMove3 {
+  0% {bottom: -35%; left: 50%; transform: rotate(-45deg)}
+  /*40% {bottom: 40%; left: 40%; height: 80%; transform: rotate(0deg)}*/
+  50% {bottom: 30%; left: 50%; transform: rotate(-45deg)}
+  100% {bottom: -35%; left: 50%; transform: rotate(-45deg))}
+}
+@keyframes sharkMove4 {
+  0% {bottom: -35%; left: 70%; }
+  /*40% {bottom: 40%; left: 40%; height: 80%; transform: rotate(0deg)}*/
+  50% {bottom: 30%; left: 70%; }
+  100% {bottom: -35%; left: 70%; )}
+}
+@keyframes sharkMove5 {
+  0% {bottom: -35%; left: 85%; }
+  /*40% {bottom: 40%; left: 40%; height: 80%; transform: rotate(0deg)}*/
+  50% {bottom: 30%; left: 85%; }
+  100% {bottom: -35%; left:85%; )}
+}
 @keyframes waveMove1 {
   0% {left: -10%;}
   50% {left: -30%;}

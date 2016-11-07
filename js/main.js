@@ -38,19 +38,35 @@ $( document ).ready(function() {
     checkWin: function() {
       if((this.numTracks === 2) && (this.distanceToGoal >= 90)) {
         this.score += 1;
-        console.log(this.score);
+        console.log("check Win:",this.name);
         this.countTracks();
         this.resetRace();
         this.displayScore();
         player1.isReady = false;
         player2.isReady = false;
         // alert(this.name + " Wins!");
-        swal({
-          title: this.name + " Win!",
-          text: "",
-          timer: 2500,
-          showConfirmButton: false
-        });
+        if (this.name === "player1") {
+          swal({
+            title: "Winner!",
+            text: "",
+            customClass: 'swal-wide',
+            timer: 2500,
+            showConfirmButton: false,
+            imageUrl: "img/ship.png",
+            imageSize: "400x400"
+          });
+        }
+        if (this.name === "player2") {
+          swal({
+            title: "Winner!",
+            text: "",
+            customClass: 'swal-wide',
+            timer: 2500,
+            showConfirmButton: false,
+            imageUrl: "img/ship2.png",
+            imageSize: "400x400"
+          });
+        }
       }
     },
     displayScore: function() {
@@ -130,7 +146,6 @@ $( document ).ready(function() {
         $(".goalLine").css("opacity", "1");
       }, 500);
     }
-
     // startCount: function() {
     //   for(var i = 3; i >= 0; i--) {
     //     console.log(i)
@@ -138,15 +153,41 @@ $( document ).ready(function() {
     // }
   }
 
+  var $shark = $('.sharks');
+    var Shark = {
+
+      // moveSharkF: function() {
+      //   this.distanceToEnd += 2;
+      // },
+      // moveSharkB: function() {
+      //   this.distanceToEnd -= 2;
+      // },
+      // checkDirectionAndGo: function() {
+      //   if(this.distanceToEnd > 40) {
+      //     this.moveSharkB();
+      //     this.css("bottom", this.distanceToEnd + "%");
+      //     window.setTimeout(this.checkDirectionAndGo, 100);
+      //   } else if(this.distanceToEnd < -35) {
+      //     this.moveSharkF();
+      //     this.css("bottom", this.distanceToEnd + "%");
+      //     window.setTimeout(this.checkDirectionAndGo, 100);
+      //   }
+      // }
+      sharkJump: function() {
+        $shark.animate({"bottom": "30%"}, 1000);
+      },
+      sharkBite: function() {
+        if($player1.css("left") === "2880px") {
+          player1.attackedBySharkP1();
+        }
+        if ($player2.css("left") === 4608) {
+          player2.attackedBySharkP2();
+        }
+      }
+    }
 
 
-// $(".startBtn").on('click', function() {
-//   console.log("start clicked");
-//   for(var i = 3; i >= 0; i--) {
-//     console.log(i)
-//     game.countMessages();
-//   }
-// });
+  // User can input name and display in alert box when the user win a race
   //
   // $("form").on('submit', function(event) {
   //       event.preventDefault();
@@ -181,13 +222,30 @@ $( document ).ready(function() {
 
 
 
+    function SharkFactory() {
+      var shark = Object.create(Shark);
+      shark.distanceToEnd = 0;
+      return shark;
+    }
+
+
+    $(document).on("keydown", function(e) {
+      if (e.which === 80) {
+        console.log('p pressed for shark');
+        console.log($player1.css("left"))
+        console.log(typeof $player1.css("left"))
+        shark.sharkJump();
+        shark.sharkBite()
+      }
+    });
+
+
 
 
   // "g" Initialize start count down.  Resets a race not total win counter
   $(document).on("keydown",function(e) {
     if (e.which === 71 ) {
       console.log("g pressed");
-      console.log(player1.distanceToGoal);
       player1.numTracks = 0;
       player2.numTracks = 0;
       player1.distanceToGoal = 0;
@@ -228,13 +286,14 @@ $( document ).ready(function() {
   });
 
 
+  //Move players
   $(document).on("keydown", function(e) {
 
     if ((e.which === 76) && (player1.isReady === true)) {
       console.log("l is pressed");
       console.log("player1 :", $player1.css("left"))
-      player1.displayLapsP1();
       if (player1.distanceToGoal < 90) {
+        player1.displayLapsP1();
         player1.moveForward();
         $player1.css("left", player1.distanceToGoal + "%");
         player1.checkWin();
@@ -263,18 +322,17 @@ $( document ).ready(function() {
     if ((e.which === 68) && (player2.isReady === true)){
       console.log("d is pressed");
       console.log("player2 :", $player2.css("left"))
-      player2.displayLapsP2();
       if (player2.distanceToGoal < 90) {
+        player2.displayLapsP2();
         player2.moveForward();
         $player2.css("left", player2.distanceToGoal + "%");
         console.log(player2.distanceToGoal);
         player2.checkWin();
         if ((player2.distanceToGoal >= 90) && (player2.numTracks === 0)) {
           player2.distanceToGoal = 0;
-          player2.countTracks();
           player2.lapsDown();
           player2.displayLapsP2();
-          game.showGoalLine();
+          player2.countTracks();
         }
         if ((player2.distanceToGoal >= 90) && (player2.numTracks === 1)) {
           player2.distanceToGoal = 0;
@@ -343,10 +401,6 @@ var $shark = $('.sharks');
       shark.sharkBite()
     }
   });
-
-
-
-
 
 
 // $player1.animate({"left": player1.distanceToGoal + "%"}, "fast");
